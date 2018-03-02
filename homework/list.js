@@ -56,24 +56,10 @@ forEach (callback) {
         this.head.next = newNode;
     }
 
-pushFront (key) {
-    // Создание нового элемента O(1)
-    const newNode = new LinkedList(key);
-
-    // Если список пуст -- присваивание head и tail ссылки на новый элемент O(1)
-    // if (this.head === null) {
-    //     this.head = newNode;
-    //     //this.tail = newNode;
-    // } else {
-        // Выставление новому элементу указатель на текущий head O(1)
-        newNode.next = this.head;
-        this.head = newNode;
-    //}
-}
 
 
   pop () {
-        //var  length = this._length;
+        var  length = this._length;
         var current=this.head,
             previous;
         while(current.next){
@@ -82,9 +68,9 @@ pushFront (key) {
         }
 
         previous.next = null;
-        //length--;
+        length--;
 
-        //return this;
+        return this;
 
     }
 
@@ -168,5 +154,12 @@ const myList = new LinkedList(1,23,44,"dsfs",{},'ret',34);
 myList.forEach((data)=>console.log(data));
 
 
-
+console.log('-----------------');
+try {
+    console.log(myList.get(79));
+} catch (e) {
+    console.log(e.message);
+    console.log('Вы ввели позицию, превышающую количество элементов в списке.' +
+        'Элемента соответствующему заданной позиции, в списке не существует')
+}
 
